@@ -1,0 +1,55 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>口罩地圖</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/maskmap.css">
+        <script src="https://kit.fontawesome.com/ffa895efe1.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css"></link> 
+        <link rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+    crossorigin="anonymous">
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+    </head>
+    <body>
+        <div class="loading">
+        </div>
+        <div>
+            <div class="bar">
+                <div class="bar-top">
+                    <div class="day">
+                        <h3 class="week"></h3>
+                        <div class="rules">
+                            <span class="date"></span>
+                            <span class="odd">身份證末碼為<strong>1,3,5,7,9</strong>可購買</span>
+                            <span class="even">身份證末碼為<strong>0,2,4,6,8</strong>可購買</span>
+                            <span class="all">不限身份證號<strong>皆可購買</strong></span>
+                            
+                        </div>
+                    </div>
+                    <select name="selector" class="list">
+                        <option>請選擇縣市</option>
+                    </select> 
+                    <select name="selector_dis" class="list_district">
+                        <option>請選擇地區</option>
+                    </select> 
+                    <input type="text" name='search' placeholder="搜尋地址" class='search_input'>
+                    <a href="#" class='search_icon'><i class="fas fa-search"></i></a>
+                </div>
+                <div class="bar-result">
+                    <ul class="result_li"></ul>
+                </div>
+            </div>
+            
+            <div id="map" class="p-map"></div>
+            <a class="toggles">&#x3e;</a>
+            <div class='geo_icon'><img src="images/place.png" alt=""></div>
+        </div>
+        <script src="js/maskmap.js"></script>
+       
+
+
+    </body>
+</html>
