@@ -180,7 +180,7 @@ function addMarkers(){
         var pack='<h1 class="pop_h1">'+data[i].properties.name+'</h1><p>'+data[i].properties.address+'</p><p>'+
         data[i].properties.phone+'</p><p>'+data[i].properties.note+'<div class="adult_sq '+a_num_back+'"><span>成人口罩</span><span>'+
         data[i].properties.mask_adult+'</span></div><div class="child_sq '+c_num_back+'"><span>兒童口罩</span><span>'+
-        data[i].properties.mask_child+'</span></div><div><a class="togoogle" href="https://www.google.com.tw/maps/dir/'+data[i].geometry.coordinates[1]+','+data[i].geometry.coordinates[0]+'/">Google 導航</a></div>';
+        data[i].properties.mask_child+'</span></div><div><a class="togoogle" href="https://www.google.com.tw/maps/place/'+data[i].properties.address+'">Google 導航</a></div>';
         //在群組圖層中加入地圖資料點
         markers.addLayer(L.marker([data[i].geometry.coordinates[1],data[i].geometry.coordinates[0]],
             {icon:mask_color}).bindPopup(pack));
@@ -218,6 +218,7 @@ function addTownlist(e){
     }
     newAlltown=new Set(allTown);//set後的結果是類陣列
     newAlltown=Array.from(newAlltown);//要轉回陣列
+    newAlltown.unshift("請選擇地區");
     for(let i=0;i<newAlltown.length;i++){
         option_town+='<option value="'+newAlltown[i]+'">'+newAlltown[i]+'</option>';
     }
