@@ -16,7 +16,8 @@ var search_icon=document.querySelector('.search_icon');
 var center_block = document.querySelector('.center-block');
 
 center_block.addEventListener('click', function(){
-    document.location.href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1656094239&redirect_uri=https://huai-sian.github.io/maskmap/&state=12345abcde&scope=profile%20openid%20email&nonce=09876xyz"
+    document.location.href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1656094239&redirect_uri=https://huai-sian.github.io/maskmap/&state=12345abcde&scope=profile%20openid%20email&nonce=09876xyz";
+    console.log('test');
 })
 
 //收縮選單
