@@ -63,7 +63,7 @@ if(getParameterByName('code')) {
     params.append('client_id', '1656094239');
     params.append('client_secret', '989bbca9b6564276fe790225af008cff'); */
     console.log(code);
-    axios.post('https://api.line.me/oauth2/v2.1/token', {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}, data).then((res) => {
+    axios.post('https://api.line.me/oauth2/v2.1/token', {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}, params: { data: data }).then((res) => {
         console.log('pp');
         console.log(res);
     })
