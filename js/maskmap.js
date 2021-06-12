@@ -47,16 +47,25 @@ function getParameterByName(name, url = window.location.href) {
 }
 if(getParameterByName('code')) {
     let code = getParameterByName('code');
-    const params = new URLSearchParams();
-    params.append('grant_type', 'authorization_code');
+    const params = {
+        grant_type: 'authorization_code',
+        code: code,
+        redirect_uri: 'https://huai-sian.github.io/maskmap/',
+        client_id: '1656094239',
+        client_secret: '989bbca9b6564276fe790225af008cff',
+    };
+    const data = Object.keys(params)
+        .map((key) => `${key}=${encodeURIComponent(params[key])}`)
+        .join('&');
+    /* params.append('grant_type', 'authorization_code');
     params.append('code', code);
     params.append('redirect_uri', 'https://huai-sian.github.io/maskmap/');
     params.append('client_id', '1656094239');
-    params.append('client_secret', '989bbca9b6564276fe790225af008cff');
-
-    axios.post('https://api.line.me/oauth2/v2.1/token', {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}, params).then((res) => {
-        console.log(res);
+    params.append('client_secret', '989bbca9b6564276fe790225af008cff'); */
+    console.log(code);
+    axios.post('https://api.line.me/oauth2/v2.1/token', {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}, data).then((res) => {
         console.log('pp');
+        console.log(res);
     })
 }
 
