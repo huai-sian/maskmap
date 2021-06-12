@@ -63,10 +63,23 @@ if(getParameterByName('code')) {
     params.append('client_id', '1656094239');
     params.append('client_secret', '989bbca9b6564276fe790225af008cff'); */
     console.log(code);
-    axios.post('https://api.line.me/oauth2/v2.1/token', {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}, params: { data: data }).then((res) => {
+    axios({
+        method: 'post',
+        url: 'https://api.line.me/oauth2/v2.1/token',
+        data: qs.stringify({
+            grant_type: 'authorization_code',
+            code: code,
+            redirect_uri: 'https://huai-sian.github.io/maskmap/',
+            client_id: '1656094239',
+            client_secret: '989bbca9b6564276fe790225af008cff',
+        }),
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded;'
+        }
+      }).then((res) => {
         console.log('pp');
         console.log(res);
-    })
+      })
 }
 
 //收縮選單
