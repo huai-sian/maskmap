@@ -473,4 +473,5 @@ body{
     background: url("https://immense-island-29489.herokuapp.com/img/btn_login_base.png") no-repeat;
     display: block;
     margin-top: 1.5rem;
+    cursor: pointer;
   }

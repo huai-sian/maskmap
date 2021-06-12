@@ -26,9 +26,23 @@ function randomstring(length) {
    return result;
 }
 
+const params = new URLSearchParams();
+params.append('grant_type', 'authorization_code');
+params.append('code', 'MVRZD756LEm6YmXSlv0R');
+params.append('redirect_uri', 'https://huai-sian.github.io/maskmap/');
+params.append('client_id', '1656094239');
+params.append('client_secret', 'b985b3a95e36c586bd61e4122ad5930d');
+
 center_block.addEventListener('click', function(){
     document.location.href=`https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1656094239&redirect_uri=https://huai-sian.github.io/maskmap/&state=${randomstring(8)}&scope=profile%20openid%20email&nonce=09876xyz`;
     console.log('test');
+    axios.post('https://api.line.me/oauth2/v2.1/token', {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}, params).then((res) => {
+        console.log(res);
+    })
+   /*  axios.get('https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js').then((res) => {
+        console.log('test');
+        console.log(res);
+    }) */
 })
 
 //收縮選單
@@ -408,3 +422,5 @@ function openMarker(lat,lng){
     
 }
 
+
+// https://huai-sian.github.io/maskmap/?code=MVRZD756LEm6YmXSlv0R&state=yu6PxB9Y
