@@ -26,24 +26,38 @@ function randomstring(length) {
    return result;
 }
 
-const params = new URLSearchParams();
-params.append('grant_type', 'authorization_code');
-params.append('code', 'MVRZD756LEm6YmXSlv0R');
-params.append('redirect_uri', 'https://huai-sian.github.io/maskmap/');
-params.append('client_id', '1656094239');
-params.append('client_secret', 'b985b3a95e36c586bd61e4122ad5930d');
+
 
 center_block.addEventListener('click', function(){
     document.location.href=`https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1656094239&redirect_uri=https://huai-sian.github.io/maskmap/&state=${randomstring(8)}&scope=profile%20openid%20email&nonce=09876xyz`;
     console.log('test');
-    axios.post('https://api.line.me/oauth2/v2.1/token', {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}, params).then((res) => {
-        console.log(res);
-    })
+   
    /*  axios.get('https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js').then((res) => {
         console.log('test');
         console.log(res);
     }) */
 })
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+if(getParameterByName('code')) {
+    let code = getParameterByName('code');
+    const params = new URLSearchParams();
+    params.append('grant_type', 'authorization_code');
+    params.append('code', code);
+    params.append('redirect_uri', 'https://huai-sian.github.io/maskmap/');
+    params.append('client_id', '1656094239');
+    params.append('client_secret', '989bbca9b6564276fe790225af008cff');
+
+    axios.post('https://api.line.me/oauth2/v2.1/token', {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}, params).then((res) => {
+        console.log(res);
+    })
+}
 
 //收縮選單
 if(window.innerWidth<768){
