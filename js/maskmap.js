@@ -56,6 +56,7 @@ if(getParameterByName('code')) {
 
     axios.post('https://api.line.me/oauth2/v2.1/token', {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}, params).then((res) => {
         console.log(res);
+        console.log('pp');
     })
 }
 
