@@ -27,7 +27,7 @@ function randomstring(length) {
    return result;
 }
 
-window.fbAsyncInit = function() {
+/* window.fbAsyncInit = function() {
     FB.init({
       appId      : '831591714123614',
       cookie     : true,
@@ -51,7 +51,7 @@ fblogin.addEventListener('click', () => {
 function statusChangeCallback(response) {
     console.log(response);
 }
-
+ */
 /* center_block.addEventListener('click', function(){
     document.location.href=`https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1656094239&redirect_uri=https://huai-sian.github.io/maskmap/&state=${randomstring(8)}&scope=profile%20openid%20email&nonce=09876xyz`;
     console.log('test');
@@ -105,7 +105,7 @@ if(getParameterByName('code')) {
         console.log(res);
       })
 } */
-
+/* 
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -113,7 +113,7 @@ if(getParameterByName('code')) {
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-
+ */
 //收縮選單
 if(window.innerWidth<768){
     toggle_sidebar();
