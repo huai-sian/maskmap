@@ -14,6 +14,7 @@ var district_li=document.querySelector('.list_district');
 var search_input=document.querySelector('.search_input');
 var search_icon=document.querySelector('.search_icon');
 var center_block = document.querySelector('.center-block');
+var fblogin = document.querySelector('.fb_login');
 
 function randomstring(length) {
     var result           = '';
@@ -26,16 +27,39 @@ function randomstring(length) {
    return result;
 }
 
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '831591714123614',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v11.0'
+    });
+      
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    }); 
+      
+  };
 
 
-center_block.addEventListener('click', function(){
+fblogin.addEventListener('click', () => {
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
+})
+
+function statusChangeCallback(response) {
+    console.log(response);
+}
+
+/* center_block.addEventListener('click', function(){
     document.location.href=`https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1656094239&redirect_uri=https://huai-sian.github.io/maskmap/&state=${randomstring(8)}&scope=profile%20openid%20email&nonce=09876xyz`;
     console.log('test');
    
-   /*  axios.get('https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js').then((res) => {
+   axios.get('https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js').then((res) => {
         console.log('test');
         console.log(res);
-    }) */
+    }) 
 })
 function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
@@ -57,11 +81,11 @@ if(getParameterByName('code')) {
     const data = Object.keys(params)
         .map((key) => `${key}=${encodeURIComponent(params[key])}`)
         .join('&');
-    /* params.append('grant_type', 'authorization_code');
+    params.append('grant_type', 'authorization_code');
     params.append('code', code);
     params.append('redirect_uri', 'https://huai-sian.github.io/maskmap/');
     params.append('client_id', '1656094239');
-    params.append('client_secret', '989bbca9b6564276fe790225af008cff'); */
+    params.append('client_secret', '989bbca9b6564276fe790225af008cff');
     console.log(code);
     axios({
         method: 'post',
@@ -74,13 +98,21 @@ if(getParameterByName('code')) {
             client_secret: '989bbca9b6564276fe790225af008cff',
         }),
         headers: {
-          'content-type': 'application/x-www-form-urlencoded;'
+          'content-type': 'application/x-www-form-urlencoded'
         }
       }).then((res) => {
         console.log('pp');
         console.log(res);
       })
-}
+} */
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 
 //收縮選單
 if(window.innerWidth<768){
